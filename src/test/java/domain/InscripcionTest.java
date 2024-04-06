@@ -13,13 +13,20 @@ import java.util.List;
 public class InscripcionTest {
     @Test
     public void inscripcionAceptadaUnaMateriaDePrimero(){
+        Materia am1 = new Materia("AM1");
+        Materia algebra = new Materia("Algebra");
 
-        Materia materia1 = new Materia("AM1", null);
-        Alumno tomi = new Alumno("Tomas", null);
+        Materia am2 = new Materia("AM2");
+        am2.agregarMateriaCorrelativa(am1);
+        am2.agregarMateriaCorrelativa(algebra);
 
-        Inscripcion inscripcion = new Inscripcion(tomi, Arrays.asList(materia1));
+        Alumno pepe = new Alumno("pepe");
 
-        Assert.assertEquals(true, inscripcion.aprobada());
+        Inscripcion insc = new Inscripcion(pepe);
+        insc.agregarMateriaParaInscripcion(am2);
+
+        Assert.assertEquals(false, insc.aprobada());
+
     }
 
 }
